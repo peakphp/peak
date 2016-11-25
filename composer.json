@@ -1,6 +1,6 @@
 {
     "name": "peakphp/peak",
-    "description": "The Laravel Framework.",
+    "description": "The Peak Framework.",
     "keywords": ["framework", "laravel"],
     "license": "BSD-3-Clause",
     "type": "project",
