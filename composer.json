@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "peakphp/framework": "dev-master"
+        "peakphp/framework": "@dev"
     },
     "autoload": {
         "psr-4": {
