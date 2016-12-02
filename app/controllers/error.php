@@ -13,6 +13,7 @@ class Error extends Action
      */
     public function _index()
     {
+        $this->view->header()-setRCode(404);
         header('HTTP/1.1 404 Not Found');
     }
 
