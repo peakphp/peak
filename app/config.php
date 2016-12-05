@@ -18,14 +18,19 @@ return [
             'engine'    => 'Layouts',
             'useLayout' => 'default',
         ],
-        'router' => [
-            'addregex' => [],
+        'routing' => [
+            [
+                'route'      => 'user/{id}:num',
+                'controller' => 'user',
+                'action'     => 'profile'
+            ],
         ],
     ],
 
     'dev'     => [],
     'testing' => [],
     'stagin'  => [],
+
     'prod'    => [
         'php' => [
             'display_errors'         => 0,
@@ -37,5 +42,4 @@ return [
             'error_controller'           => 'error',
         ],
     ],
-
 ];
