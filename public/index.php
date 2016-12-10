@@ -1,22 +1,14 @@
 <?php
 /**
- * Peak App Launcher
+ * Peak Application Launcher
  */
+
 include './../vendor/autoload.php';
 
-/**
- * Usefull when app and library or outside of public route
- */
-$path = substr(str_replace(array($_SERVER['DOCUMENT_ROOT'],basename(__DIR__)),'',str_replace('\\','/',__DIR__)), 0, -1);
-
-/**
- * Session
- */
 session_start();
 
-/**
- * LAUNCH Application
- */
+$path = relative_basepath(__DIR__);
+
 try {
 
     $app = Peak\Application::create([
@@ -30,5 +22,11 @@ try {
     $app->run()->render();
 }
 catch(\Exception $e) {
-    echo $e->getMessage();
+    if(is_object($app)) {
+        $app->front->errorDispatch($e)
+                   ->render();
+    }
+    // else {
+    //     echo $e->getMessage();
+    // }
 }
