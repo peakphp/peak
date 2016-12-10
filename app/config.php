@@ -1,7 +1,10 @@
 <?php
-
+/**
+ * Application configs
+ */
 return [
 
+    // the is the base for all environment
     'all' => [
 
         'php' => [
@@ -18,7 +21,7 @@ return [
             'engine'    => 'Layouts',
             'useLayout' => 'default',
         ],
-        'routing' => [
+        'routing' => [ //custom routes ...
             [
                 'route'      => 'user/{id}:num',
                 'controller' => 'user',
@@ -27,9 +30,12 @@ return [
         ],
     ],
 
-    'dev'     => [],
-    'testing' => [],
-    'stagin'  => [],
+    // those environments settings will override settings of base "all" settings if set
+    'dev'      => [],
+
+    'testing'  => [],
+
+    'staging'  => [],
 
     'prod'    => [
         'php' => [
