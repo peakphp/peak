@@ -1,18 +1,25 @@
 <?php
 namespace App;
 
-use Peak\Application\Bootstrap as PeakBootstrap;
+use Peak\Application\Bootstrapper;
 
 /**
  * App Bootstrapper
  */
-class Bootstrap extends PeakBootstrap
+class Bootstrap extends Bootstrapper
 {
 
     /**
-     * Init env
+     * Development env
      */
-    public function initEnv()
+    public function envDev()
+    {
+    }
+
+    /**
+     * Production env
+     */
+    public function devProd()
     {
     }
 
