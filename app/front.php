@@ -4,10 +4,14 @@ namespace App;
 use Peak\Controller\Front as PeakControllerFront;
 
 /**
- * App Front Controller
+ * Application Front Controller
  */
 class Front extends PeakControllerFront
 {
+    
+    public function preRender()
+    {
+    }
     
     public function postRender()
     {
