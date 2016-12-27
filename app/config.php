@@ -31,7 +31,18 @@ return [
     ],
 
     // those environments settings will override settings of base "all" settings if set
-    'dev'      => [],
+    'dev'      => [
+        'db' => [
+            'driver'    => 'mysql',
+            'host'      => 'localhost',
+            'database'  => 'eample',
+            'username'  => 'root',
+            'password'  => '',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ]
+    ],
 
     'testing'  => [],
 
