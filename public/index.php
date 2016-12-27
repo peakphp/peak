@@ -22,11 +22,15 @@ try {
     $app->run()->render();
 }
 catch(\Exception $e) {
-    if(is_object($app)) {
+    
+    if(is_object($app) && is_object($app->front)) {
         $app->front->errorDispatch($e)
                    ->render();
     }
-    // else {
-    //     echo $e->getMessage();
-    // }
+    elseif(is_env('dev')) {
+        echo $e->getMessage();
+    }
+    else {
+        // log error here?
+    }
 }
