@@ -1,2 +1,2 @@
 <!-- index -->
-<h1><?php echo $this->message; ?></h1>
+This is the default web page html content
