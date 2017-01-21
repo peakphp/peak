@@ -3,6 +3,7 @@ namespace App;
 
 use Peak\Application;
 use Peak\Application\Bootstrapper;
+use Peak\Registry;
 
 /**
  * App Bootstrapper
@@ -15,7 +16,8 @@ class Bootstrap extends Bootstrapper
      */
     public function initDb()
     {
-        //Database::connect(Application::conf('db'));
+        // $db = new Peak\Database(Application::conf('db'));
+        // Registry::set('db', $db);
     }
 
     /**

@@ -21,7 +21,7 @@ return [
             'engine'    => 'Layouts',
             'useLayout' => 'default',
         ],
-        'routing' => [ //custom routes ...
+        'routes' => [ //custom routes ...
             [
                 'route'      => 'user/{id}:num',
                 'controller' => 'user',
