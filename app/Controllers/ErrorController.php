@@ -13,7 +13,7 @@ class Error extends Action
      */
     public function _index()
     {
-        $this->view->header()-setCode(404);
+        $this->view->header()->setCode(404);
     }
 
 }
