@@ -5,30 +5,37 @@
 
 include './../vendor/autoload.php';
 
+session_name('myapp');
 session_start();
-
-$path = relative_basepath(__DIR__);
 
 try {
 
     $app = Peak\Application::create([
         'env'  => 'dev',
         'path' => [
-            'public' => $path.'/public',
-            'app'    => $path.'/app',
+            'public' => __DIR__,
+            'app'    => __DIR__.'/../app',
         ],
     ]);
 
     $app->run()->render();
 }
 catch(\Exception $e) {
+
+    if(isEnv('dev')) {
+        if($e instanceof \Peak\Exception) {
+            $e->printDebugTrace();
+        }
+        else {
+            echo $e->getMessage();
+        }
+        die();
+    }
+    
     
     if(is_object($app) && is_object($app->front)) {
         $app->front->errorDispatch($e)
                    ->render();
-    }
-    elseif(is_env('dev')) {
-        echo $e->getMessage();
     }
     else {
         // log error here?
