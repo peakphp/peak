@@ -14,7 +14,7 @@ return [
         ],
         'front' => [
             'allow_internal_controllers' => 1,
-            'default_controller'         => 'page',
+            'default_controller'         => 'index',
             'error_controller'           => 'error',
         ],
         'view' => [
