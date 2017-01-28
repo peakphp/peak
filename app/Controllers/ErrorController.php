@@ -6,7 +6,7 @@ use Peak\Controller\Action;
 /**
  * Error Controller
  */
-class Error extends Action
+class ErrorController extends Action
 {
     /**
      * index Action (default controller action)

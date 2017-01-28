@@ -6,7 +6,7 @@ use Peak\Controller\Action;
 /**
  * Index Controller
  */
-class Index extends Action
+class IndexController extends Action
 {
 
     /**
