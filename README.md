@@ -13,3 +13,9 @@ Requirements:
     - PDO PHP Extension
     - Mbstring PHP Extension
     - Tokenizer PHP Extension
+
+### Install via composer
+
+```
+composer create-project peakphp/peak --prefer-dist
+```
