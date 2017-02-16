@@ -19,3 +19,7 @@ Requirements:
 ```
 composer create-project peakphp/peak --prefer-dist
 ```
+
+###Api
+
+Api documentation [here](http://api.peakframework.com)
