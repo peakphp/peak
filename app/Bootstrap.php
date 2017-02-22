@@ -11,14 +11,7 @@ use Peak\Registry;
 class Bootstrap extends Bootstrapper
 {
 
-    /**
-     * Connect to database
-     */
-    public function initDb()
-    {
-        // $db = new Peak\Database(Application::conf('db'));
-        // Registry::set('db', $db);
-    }
+    protected $processes = [];
 
     /**
      * Development env

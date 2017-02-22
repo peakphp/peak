@@ -15,6 +15,8 @@ class Front extends PeakControllerFront
     
     public function postRender()
     {
-        $this->controller->view->debugbar()->show();
+        if(isEnv('dev')) {
+            $this->controller->view->debugbar()->show();
+        }
     }
 }
