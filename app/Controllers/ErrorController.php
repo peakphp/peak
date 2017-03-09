@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use Peak\Controller\Action;
@@ -15,5 +16,4 @@ class ErrorController extends Action
     {
         $this->view->header()->setCode(404);
     }
-
 }

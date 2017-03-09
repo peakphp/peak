@@ -8,6 +8,8 @@ return [
     'all' => [
 
         'php' => [
+            'display_errors'         => 0,
+            'display_startup_errors' => 0,
             'date.timezone'          => 'America/New_York',
         ],
         'front' => [
@@ -30,7 +32,8 @@ return [
         ],
     ],
 
-    // those environments settings will override settings of base "all" settings if set
+    // those environments settings will override settings
+    // of base "all" settings if set
     'dev'      => [
         'php' => [
             'display_errors'         => 1,

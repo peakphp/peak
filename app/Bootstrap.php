@@ -10,7 +10,10 @@ use Peak\Registry;
  */
 class Bootstrap extends Bootstrapper
 {
-
+    /**
+     * App process
+     * @var array
+     */
     protected $processes = [];
 
     /**
@@ -23,8 +26,7 @@ class Bootstrap extends Bootstrapper
     /**
      * Production env
      */
-    public function devProd()
+    public function envProd()
     {
     }
-
 }

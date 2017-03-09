@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use Peak\Controller\Action;
@@ -8,7 +9,6 @@ use Peak\Controller\Action;
  */
 class IndexController extends Action
 {
-
     /**
      * preAction() - Executed before controller handle any action (Optionnal)
      */
@@ -30,5 +30,4 @@ class IndexController extends Action
     public function postAction()
     {
     }
-    
 }
