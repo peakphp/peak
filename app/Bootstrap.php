@@ -1,9 +1,7 @@
 <?php
 namespace App;
 
-use Peak\Application;
-use Peak\Application\Bootstrapper;
-use Peak\Registry;
+use Peak\Bedrock\Application\Bootstrapper;
 
 /**
  * App Bootstrapper

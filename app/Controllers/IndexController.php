@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Peak\Controller\Action;
+use Peak\Bedrock\Controller\Action;
 
 /**
  * Index Controller
