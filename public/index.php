@@ -10,34 +10,35 @@ session_start();
 
 try {
 
-    $app = Peak\Application::create([
+    $container = new \Peak\Di\Container;
+
+    $app = new \Peak\Bedrock\Application($container, [
         'env'  => 'dev',
+        'conf' => 'config.php',
         'path' => [
             'public' => __DIR__,
             'app'    => __DIR__.'/../app',
-        ],
+        ]
     ]);
 
     $app->run()->render();
+    
 }
 catch(\Exception $e) {
 
-    if(isEnv('dev')) {
-        if($e instanceof \Peak\Exception) {
+    $container = \Peak\Bedrock\Application::container();
+
+    if ($container->hasInstance('Peak\Bedrock\Application\Kernel')) {
+        $kernel = \Peak\Bedrock\Application::kernel();
+        $kernel->front->errorDispatch($e);
+        $kernel->render();
+    } elseif (isEnv('dev')) {
+        if ($e instanceof \Peak\Exception) {
             $e->printDebugTrace();
-        }
-        else {
+        } else {
             echo $e->getMessage();
         }
-        die();
-    }
-    
-    
-    if(is_object($app) && is_object($app->front)) {
-        $app->front->errorDispatch($e)
-                   ->render();
-    }
-    else {
+    } else {
         // log error here?
     }
 }
