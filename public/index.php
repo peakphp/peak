@@ -1,8 +1,10 @@
 <?php
-/**
- * Peak Application Launcher
- */
 
+/*
+|--------------------------------------------------------------------------
+| Application launcher
+|--------------------------------------------------------------------------
+*/
 include './../vendor/autoload.php';
 
 session_name('myapp');
@@ -22,12 +24,12 @@ try {
     ]);
 
     $app->run()->render();
-    
-}
-catch(\Exception $e) {
+
+} catch(\Exception $e) {
 
     $container = \Peak\Bedrock\Application::container();
 
+    // if kernel is present, try to render error controller
     if ($container->hasInstance('Peak\Bedrock\Application\Kernel')) {
         $kernel = \Peak\Bedrock\Application::kernel();
         $kernel->front->errorDispatch($e);
@@ -38,7 +40,8 @@ catch(\Exception $e) {
         } else {
             echo $e->getMessage();
         }
-    } else {
-        // log error here?
     }
+
+    // log exception
+    new \Peak\Common\ExceptionLogger(__DIR__.'/../logs/errors.log', $e);
 }
