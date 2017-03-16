@@ -5,7 +5,7 @@
 <a href="https://packagist.org/packages/peakphp/framework"><img src="https://poser.pugx.org/peakphp/framework/license" alt="License"></a>
 </p>
 
-###About Peak Framework v2.x
+### About Peak Framework v2.x
 
 Requirements:
 
@@ -20,6 +20,6 @@ Requirements:
 composer create-project peakphp/peak --prefer-dist
 ```
 
-###Api
+### Api
 
 Api documentation [here](http://api.peakframework.com)
