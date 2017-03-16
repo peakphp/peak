@@ -43,5 +43,5 @@ try {
     }
 
     // log exception
-    new \Peak\Common\ExceptionLogger(__DIR__.'/../logs/errors.log', $e);
+    new \Peak\Common\ExceptionLogger($e, __DIR__.'/../logs/errors.log');
 }
