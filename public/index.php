@@ -7,9 +7,6 @@
 */
 include './../vendor/autoload.php';
 
-session_name('myapp');
-session_start();
-
 try {
 
     $container = new \Peak\Di\Container;
@@ -29,7 +26,8 @@ try {
 
     $container = \Peak\Bedrock\Application::container();
 
-    // if kernel is present, try to render error controller
+    // if kernel is present, try to render error controller.
+    // otherwise, if environment is "dev" we throw exception message
     if ($container->hasInstance('Peak\Bedrock\Application\Kernel')) {
         $kernel = \Peak\Bedrock\Application::kernel();
         $kernel->front->errorDispatch($e);
