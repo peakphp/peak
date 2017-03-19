@@ -33,11 +33,7 @@ try {
         $kernel->front->errorDispatch($e);
         $kernel->render();
     } elseif (isEnv('dev')) {
-        if ($e instanceof \Peak\Exception) {
-            $e->printDebugTrace();
-        } else {
-            echo $e->getMessage();
-        }
+        printHtmlExceptionTrace($e);
     }
 
     // log exception
