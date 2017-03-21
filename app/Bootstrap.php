@@ -1,4 +1,5 @@
 <?php
+
 namespace App;
 
 use Peak\Bedrock\Application\Bootstrapper;
