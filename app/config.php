@@ -13,7 +13,6 @@ return [
             'date.timezone'          => 'America/New_York',
         ],
         'front' => [
-            'allow_internal_controllers' => 1,
             'default_controller'         => 'index',
             'error_controller'           => 'error',
         ],
@@ -66,7 +65,6 @@ return [
             'display_startup_errors' => 0,
         ],
         'front' => [
-            'allow_internal_controllers' => 0,
             'default_controller'         => 'index',
             'error_controller'           => 'error',
         ],
