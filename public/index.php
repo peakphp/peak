@@ -12,7 +12,7 @@ $container = new \Peak\Di\Container;
 try {
 
     $app = new \Peak\Bedrock\Application($container, [
-        'env'  => 'dev',
+        'env'  => detectEnvFile(__DIR__),
         'conf' => 'config.php',
         'path' => [
             'public' => __DIR__,
