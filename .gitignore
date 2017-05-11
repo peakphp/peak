@@ -25,6 +25,12 @@ Thumbs.db
 *.tar
 *.zip
 
+# ignore app environment files
+.prod
+.staging
+.testing
+.dev
+
 # Folders to ignore
 /node_modules
 /_test
