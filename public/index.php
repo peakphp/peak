@@ -7,11 +7,15 @@
 */
 include './../vendor/autoload.php';
 
-$container = new \Peak\Di\Container;
+use Peak\Bedrock\Application;
+use Peak\Bedrock\Application\Kernel;
+use Peak\Di\Container;
+use Peak\Common\ExceptionLogger;
+
+$container = new Container;
 
 try {
-
-    $app = new \Peak\Bedrock\Application($container, [
+    $app = new Application($container, [
         'env'  => detectEnvFile(__DIR__),
         'conf' => 'config.php',
         'path' => [
@@ -26,8 +30,8 @@ try {
 
     // if kernel is present, try to render error controller.
     // otherwise, if environment is "dev" we throw exception message
-    if ($container->has('Peak\Bedrock\Application\Kernel')) {
-        $kernel = \Peak\Bedrock\Application::kernel();
+    if ($container->has('Kernel')) {
+        $kernel = Application::kernel();
         $kernel->front->errorDispatch($e);
         $kernel->render();
     } elseif (isEnv('dev')) {
@@ -35,5 +39,5 @@ try {
     }
 
     // log exception
-    new \Peak\Common\ExceptionLogger($e, __DIR__.'/../logs/errors.log');
+    new ExceptionLogger($e, __DIR__.'/../logs/errors.log');
 }
