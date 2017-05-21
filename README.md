@@ -22,9 +22,9 @@ composer create-project peakphp/peak --prefer-dist
 
 ### Default application features:
 
-MVC structure
-[Laravel Database](https://github.com/illuminate/database)
-[Phinx](https://github.com/robmorgan/phinx) for database migrations
+    MVC structure
+    [Laravel Database](https://github.com/illuminate/database)
+    [Phinx](https://github.com/robmorgan/phinx) for database migrations
 
 ### Api
 
