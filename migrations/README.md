@@ -12,11 +12,6 @@ Windows:
 ```
 $ call "vendor/bin/phinx.bat" create [MigrationName] -c phinx-config.php
 ```
-examples: 
-```
-$ php vendor/bin/phinx create SystemUsersRoles -c phinx-config.php
-$ php vendor/bin/phinx create OrgInvoices -c phinx-config.php
-```
 
 2. See example.php to know how to use phinx with laravel schema builder
 
