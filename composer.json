@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "peakphp/framework": "2.6.*"
+        "peakphp/framework": "2.6.*",
+        "robmorgan/phinx": "0.8.*"
     },
     "autoload": {
         "psr-4": {
