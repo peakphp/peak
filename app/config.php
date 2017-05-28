@@ -41,7 +41,7 @@ return [
         'db' => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => 'example',
+            'database'  => 'peakapp',
             'username'  => 'root',
             'password'  => '',
             'charset'   => 'utf8',
