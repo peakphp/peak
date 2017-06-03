@@ -13,7 +13,12 @@ class Bootstrap extends Bootstrapper
      * App process
      * @var array
      */
-    protected $processes = [];
+    protected $processes = [
+        \Peak\Bedrock\Application\Bootstrap\Session::class,
+        \Peak\Bedrock\Application\Bootstrap\ConfigPHP::class,
+        \Peak\Bedrock\Application\Bootstrap\ConfigView::class,
+        \Peak\Bedrock\Application\Bootstrap\ConfigCustomRoutes::class
+    ];
 
     /**
      * Development env
