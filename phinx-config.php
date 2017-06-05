@@ -6,7 +6,15 @@
 |--------------------------------------------------------------------------
 */
 
+use Peak\Bedrock\Application;
+use Peak\Config\File;
+use Peak\Di\Container;
+
 $config = new \Peak\Config\File(__DIR__.'/app/config.php');
+Application::setContainer(new Container);
+Application::container()->add($config, 'Config');
+
+define('PHINX_ENV', getPhinxMigrateEnv());
 
 return [
     'paths' => [
