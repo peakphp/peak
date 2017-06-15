@@ -2,12 +2,12 @@
 
 namespace App\Controllers;
 
-use Peak\Bedrock\Controller\Action;
+use Peak\Bedrock\Controller\ActionController;
 
 /**
  * Index Controller
  */
-class IndexController extends Action
+class IndexController extends ActionController
 {
     /**
      * preAction() - Executed before controller handle any action (Optionnal)

@@ -2,12 +2,12 @@
 
 namespace App;
 
-use Peak\Bedrock\Controller\Front as PeakControllerFront;
+use Peak\Bedrock\Controller\FrontController;
 
 /**
  * Application Front Controller
  */
-class Front extends PeakControllerFront
+class Front extends FrontController
 {
 
     public function preDispatch()
@@ -16,7 +16,7 @@ class Front extends PeakControllerFront
         
     public function postRender()
     {
-        if(isEnv('dev')) {
+        if (isEnv('dev')) {
             $this->controller->view->debugbar()->show();
         }
     }

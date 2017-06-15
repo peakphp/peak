@@ -2,12 +2,12 @@
 
 namespace App\Controllers;
 
-use Peak\Bedrock\Controller\Action;
+use Peak\Bedrock\Controller\ActionController;
 
 /**
  * Error Controller
  */
-class ErrorController extends Action
+class ErrorController extends ActionController
 {
     /**
      * index Action (default controller action)
