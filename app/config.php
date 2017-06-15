@@ -4,7 +4,7 @@
  */
 return [
 
-    // the is the base for all environment
+    // the is the base for all environments
     'all' => [
 
         'php' => [
@@ -21,13 +21,14 @@ return [
             'useLayout' => 'default',
         ],
         'routes' => [ //custom routes ...
-            [
-                'route'      => 'user/{id}:num',
-                'controller' => 'user',
-                'action'     => 'profile'
-            ],
+            'user/{id]:num | user/profile',
+            'sign-in | index|login ',
             // alternative syntax
-            // 'user/{id]:num | user/profile'
+            // [
+            //     'route'      => 'user/{id}:num',
+            //     'controller' => 'user',
+            //     'action'     => 'profile'
+            // ],
         ],
     ],
 
