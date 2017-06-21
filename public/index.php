@@ -12,12 +12,16 @@ use Peak\Bedrock\Application\Kernel;
 use Peak\Di\Container;
 use Peak\Common\ExceptionLogger;
 
+$env = detectEnvFile(__DIR__);
 $container = new Container;
 
 try {
     $app = new Application($container, [
-        'env'  => detectEnvFile(__DIR__),
-        'conf' => 'config.php',
+        'env'  => $env,
+        'conf' => [
+            __DIR__.'/../config/app.php',
+            __DIR__.'/../config/app.'.$env.'.php'
+        ],
         'path' => [
             'public' => __DIR__,
             'app'    => __DIR__.'/../app',
