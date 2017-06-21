@@ -12,10 +12,16 @@ use Peak\Bedrock\Application\Kernel;
 use Peak\Di\Container;
 use Peak\Common\ExceptionLogger;
 
+// Look in __DIR__ for the first files found in this order: 
+// .prod or .staging or .testing
+// If no file found, [dev] will be used.
 $env = detectEnvFile(__DIR__);
+
+// create a container
 $container = new Container;
 
 try {
+    // create the app
     $app = new Application($container, [
         'env'  => $env,
         'conf' => [
@@ -28,6 +34,7 @@ try {
         ]
     ]);
 
+    // do all the process
     $app->run()->render();
 
 } catch(\Exception $e) {
