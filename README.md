@@ -5,6 +5,8 @@
 <a href="https://packagist.org/packages/peakphp/framework"><img src="https://poser.pugx.org/peakphp/framework/license" alt="License"></a>
 </p>
 
+> **Note:** This repository contains an application skeleton for Peak framework. If you want only the framework core, visit the main [framework repository](https://github.com/peakphp/framework).
+
 ### About Peak Framework v2.x
 
 Requirements:
