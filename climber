@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Cli Application launcher
+|--------------------------------------------------------------------------
+*/
+
+require __DIR__.'/vendor/autoload.php';
+
+use Peak\Climber\Application;
+use Cli\Commands\ExampleCommand;
+
+// initiate cli app
+$application = new Application(null, [
+    'env' => 'dev',
+    'conf' => [
+        __DIR__.'/_test/config/cli.php'
+    ]
+]);
+
+// register commands
+$application->add(new ExampleCommand());
+
+// run the app
+$application->run();
