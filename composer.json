@@ -1,7 +1,7 @@
 {
     "name": "peakphp/peak",
-    "description": "The Peak Framework.",
-    "keywords": ["framework", "peak"],
+    "description": "Peak default application.",
+    "keywords": ["peak", "framework", "app", "cli-app"],
     "license": "BSD-3-Clause",
     "type": "project",
     "require": {
@@ -16,7 +16,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Cli\\": "cli/"
         }
     }
 }
