@@ -16,7 +16,7 @@ use Cli\Commands\ExampleCommand;
 $application = new Application(null, [
     'env' => 'dev',
     'conf' => [
-        __DIR__.'/_test/config/cli.php'
+        __DIR__.'/config/cli.php'
     ]
 ]);
 
