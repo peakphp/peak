@@ -12,8 +12,8 @@ try {
     $application = new Application(null, [
         'env' => 'dev',
         'conf' => [
-            __DIR__.'/_test/config/cli.php',
-            __DIR__.'/_test/config/cron.database.php'
+            __DIR__.'/config/cli.php',
+            __DIR__.'/config/cron.database.php'
         ]
     ]);
 
