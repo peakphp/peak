@@ -1,27 +1,31 @@
 #!/usr/bin/env php
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Cli Application launcher
-|--------------------------------------------------------------------------
-*/
-
 require __DIR__.'/vendor/autoload.php';
 
 use Peak\Climber\Application;
+use Peak\Climber\Cron\RegisterCommands;
 use Cli\Commands\ExampleCommand;
 
-// initiate cli app
-$application = new Application(null, [
-    'env' => 'dev',
-    'conf' => [
-        __DIR__.'/config/cli.php'
-    ]
-]);
+try {
+    // create cli application
+    $application = new Application(null, [
+        'env' => 'dev',
+        'conf' => [
+            __DIR__.'/_test/config/cli.php',
+            __DIR__.'/_test/config/cron.database.php'
+        ]
+    ]);
 
-// register commands
-$application->add(new ExampleCommand());
+    // register cron commands
+    new RegisterCommands($application);
 
-// run the app
-$application->run();
+    // register other commands
+    $application->add(new ExampleCommand());
+
+    // and finally, run the whole thing
+    $application->run();
+
+} catch(Exception $e) {
+    echo get_class($e).': '.$e->getMessage();
+}
