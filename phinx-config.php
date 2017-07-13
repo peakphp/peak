@@ -18,7 +18,7 @@ define('PHINX_ENV', getPhinxMigrateEnv());
 
 return [
     'paths' => [
-        'migrations' => 'migrations'
+        'migrations' => 'database/migrations'
     ],
     'migration_base_class' => '\App\Models\Migration',
     'environments' => [
