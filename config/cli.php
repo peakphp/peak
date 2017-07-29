@@ -10,5 +10,9 @@ return [
         'display_startup_errors' => 1,
         'date.timezone'          => 'America/Toronto',
     ],
-    'climber_cmd_prefix' => 'php climber'
+    
+    'cron' => [
+        'processor_prefix' => 'php climber',
+        'cmd_prefix' => 'cron'
+    ]
 ];
