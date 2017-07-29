@@ -15,6 +15,7 @@ class Bootstrap extends Bootstrapper
      */
     protected $processes = [
         \Peak\Bedrock\Application\Bootstrap\ConfigPHP::class,
+        \Peak\Climber\Bootstrap\ConfigCommands::class,
     ];
 
     /**
