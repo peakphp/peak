@@ -14,5 +14,9 @@ return [
     'cron' => [
         'processor_prefix' => 'php climber',
         'cmd_prefix' => 'cron'
+    ],
+
+    'commands' => [
+        \Cli\Commands\ExampleCommand::class
     ]
 ];
