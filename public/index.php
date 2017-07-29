@@ -8,7 +8,6 @@
 include './../vendor/autoload.php';
 
 use Peak\Bedrock\Application;
-use Peak\Bedrock\Application\Kernel;
 use Peak\Di\Container;
 use Peak\Common\ExceptionLogger;
 
