@@ -4,7 +4,6 @@
 require __DIR__.'/vendor/autoload.php';
 
 use Peak\Climber\Application;
-use Peak\Climber\Cron\RegisterCommands;
 use Cli\Commands\ExampleCommand;
 
 try {
@@ -16,12 +15,6 @@ try {
             __DIR__.'/config/cron.database.php'
         ]
     ]);
-
-    // register cron commands
-    new RegisterCommands($application);
-
-    // register other commands
-    $application->add(new ExampleCommand());
 
     // and finally, run the whole thing
     $application->run();
