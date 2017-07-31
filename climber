@@ -20,4 +20,7 @@ try {
 
 } catch(Exception $e) {
     echo get_class($e).': '.$e->getMessage();
+
+    // log exception
+    new ExceptionLogger($e, __DIR__.'/logs/cli.errors.log');
 }
