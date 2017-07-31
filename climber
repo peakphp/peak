@@ -4,7 +4,6 @@
 require __DIR__.'/vendor/autoload.php';
 
 use Peak\Climber\Application;
-use Cli\Commands\ExampleCommand;
 
 try {
     // create cli application
