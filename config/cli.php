@@ -9,7 +9,7 @@ return [
     'php' => [
         'display_errors'         => 1,
         'display_startup_errors' => 1,
-        'date.timezone'          => 'America/Toronto',
+        'date.timezone'          => 'America/New_York',
     ],
     
     // Cron specific settings.
