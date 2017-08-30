@@ -13,10 +13,10 @@ use Peak\Common\DotNotationCollection;
 
 $config = new DotNotationCollection();
 $config->dev = (new ConfigSoftLoader([
-    __DIR__.'/database.dev.php'
+    __DIR__.'/config/database.dev.php'
 ]))->asArray();
-$config->dev = (new ConfigSoftLoader([
-    __DIR__.'/database.prod.php'
+$config->prod = (new ConfigSoftLoader([
+    __DIR__.'/config/database.prod.php'
 ]))->asArray();
 
 Application::setContainer(new Container);
