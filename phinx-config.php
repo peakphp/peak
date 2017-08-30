@@ -7,10 +7,18 @@
 */
 
 use Peak\Bedrock\Application;
-use Peak\Config\File;
 use Peak\Di\Container;
+use Peak\Config\ConfigSoftLoader;
+use Peak\Common\DotNotationCollection;
 
-$config = new \Peak\Config\File(__DIR__.'/app/config.php');
+$config = new DotNotationCollection();
+$config->dev = (new ConfigSoftLoader([
+    __DIR__.'/database.dev.php'
+]))->asArray();
+$config->dev = (new ConfigSoftLoader([
+    __DIR__.'/database.prod.php'
+]))->asArray();
+
 Application::setContainer(new Container);
 Application::container()->add($config, 'Config');
 
