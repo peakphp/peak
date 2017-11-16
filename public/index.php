@@ -25,7 +25,8 @@ try {
         'env'  => $env,
         'conf' => [
             __DIR__.'/../config/app.php',
-            __DIR__.'/../config/app.'.$env.'.php'
+            __DIR__.'/../config/app.'.$env.'.php',
+            __DIR__.'/../config/database.'.$env.'.php'
         ],
         'path' => [
             'public' => __DIR__,

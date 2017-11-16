@@ -25,7 +25,7 @@ return [
     ],
 
     // Let the routing system guess route based on the request uri.
-    'auto_routing' => 1,
+    'auto_routing' => 0,
 
     // Define custom route(s).
     // When "auto_routing" is disabled, only defined route(s) below will be resolved.
