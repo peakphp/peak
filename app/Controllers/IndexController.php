@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use Peak\Bedrock\Application;
 use Peak\Bedrock\Controller\ActionController;
 
 /**
