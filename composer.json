@@ -15,6 +15,10 @@
         "phpunit/phpunit": "~5.7"
     },
     "autoload": {
+        "files": [
+            "app/constants.php",
+            "app/functions.php"
+        ],
         "psr-4": {
             "App\\": "app/",
             "Cli\\": "cli/"
