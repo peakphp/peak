@@ -24,9 +24,9 @@ try {
     $app = new Application($container, [
         'env'  => $env,
         'conf' => [
-            __DIR__.'/../config/app.php',
-            __DIR__.'/../config/app.'.$env.'.php',
-            __DIR__.'/../config/database.'.$env.'.php'
+            CONFIG_PATH.'/app.php',
+            CONFIG_PATH.'/app.'.$env.'.php',
+            CONFIG_PATH.'/database.'.$env.'.php'
         ],
         'path' => [
             'public' => __DIR__,
@@ -50,5 +50,5 @@ try {
     }
 
     // log exception
-    new ExceptionLogger($e, __DIR__.'/../logs/errors.log');
+    new ExceptionLogger($e, LOG_PATH.'/errors.log');
 }
