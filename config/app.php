@@ -5,11 +5,27 @@
 |--------------------------------------------------------------------------
 */
 return [
+
+    // Generic informations
+    'name' => 'PeakApp',
+    'version' => '1.0'
+
     // General php setting(s) overflow, in case you can't tweak directly your php.ini.
     'php' => [
         'display_errors'         => 0,
         'display_startup_errors' => 0,
         'date.timezone'          => 'America/New_York',
+    ],
+
+    // Session configuration for Peak\Bedrock\Application\Bootstrap\Session
+    'session' => [
+        //'name' => '',
+        //'save_path' => '',
+        //'save_handler' => '',
+        'options' => [
+            'cookie_httponly' => true,
+            'cookie_secure' => true,
+        ]
     ],
 
     // Define default workflow of the front.
