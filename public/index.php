@@ -48,7 +48,7 @@ try {
             $kernel->render();
         } catch(\Exception $ee) {
             if (isDev()) {
-                printHtmlExceptionTrace($e);
+                printHtmlExceptionTrace($ee);
             }
         }
     } elseif (isDev()) {
