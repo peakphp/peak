@@ -42,10 +42,16 @@ try {
     // if kernel is present, try to render error controller.
     // otherwise, if environment is "dev" we throw exception message
     if ($container->hasAlias('AppKernel')) {
-        $kernel = Application::kernel();
-        $kernel->front->errorDispatch($e);
-        $kernel->render();
-    } elseif (isEnv('dev')) {
+        try {
+            $kernel = Application::kernel();
+            $kernel->front->errorDispatch($e);
+            $kernel->render();
+        } catch(\Exception $ee) {
+            if (isDev()) {
+                printHtmlExceptionTrace($e);
+            }
+        }
+    } elseif (isDev()) {
         printHtmlExceptionTrace($e);
     }
 
