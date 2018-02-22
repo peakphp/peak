@@ -20,7 +20,7 @@ Requirements:
 ### Install via composer
 
 ```
-composer create-project peakphp/peak --prefer-dist
+composer create-project peak/peak --prefer-dist
 ```
 
 ### Default application features:

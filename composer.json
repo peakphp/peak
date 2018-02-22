@@ -1,5 +1,5 @@
 {
-    "name": "peakphp/peak",
+    "name": "peak/peak",
     "description": "Peak default application.",
     "keywords": ["peak", "framework", "app", "cli-app"],
     "license": "BSD-3-Clause",
