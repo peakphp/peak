@@ -16,8 +16,8 @@ class Front extends FrontController
         
     public function postRender()
     {
-        if (isEnv('dev')) {
-            $this->controller->view->debugbar()->show();
+        if (isDev()) {
+            echo $this->controller->view->debugBar()->render();
         }
     }
 }
