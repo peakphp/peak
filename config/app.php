@@ -8,7 +8,7 @@ return [
 
     // Generic informations
     'name' => 'PeakApp',
-    'version' => '1.0'
+    'version' => '1.0',
 
     // General php setting(s) overflow, in case you can't tweak directly your php.ini.
     'php' => [
