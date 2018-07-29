@@ -4,9 +4,7 @@ namespace App\Models;
 
 use Peak\Bedrock\Application;
 use Peak\Providers\Laravel\Database;
-
 use Phinx\Migration\AbstractMigration;
-use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Migration extends AbstractMigration 
 {

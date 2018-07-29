@@ -10,10 +10,16 @@ use Peak\Bedrock\Controller\FrontController;
 class Front extends FrontController
 {
 
+    /**
+     * Before controller dispatching
+     */
     public function preDispatch()
     {
     }
-        
+
+    /**
+     * After view rendering
+     */
     public function postRender()
     {
         if (isDev()) {

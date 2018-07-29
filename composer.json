@@ -1,18 +1,18 @@
 {
     "name": "peak/peak",
-    "description": "Peak default application.",
+    "description": "Peak Application with database and migration support",
     "keywords": ["peak", "framework", "app", "cli-app"],
-    "license": "BSD-3-Clause",
+    "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.6.4",
-        "peak/framework": "2.27.0",
-        "illuminate/database": "5.4.*@dev",
-        "illuminate/events": "5.4.*@dev",
-        "robmorgan/phinx": "0.8.*"
+        "php": ">=7.1.3",
+        "peak/framework": "^3.0",
+        "illuminate/database": "^5.6",
+        "illuminate/events": "^5.6",
+        "robmorgan/phinx": "0.10.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "~5.7"
+        "phpunit/phpunit": "^7.2"
     },
     "autoload": {
         "files": [
