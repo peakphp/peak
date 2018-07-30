@@ -8,11 +8,11 @@
 
 > **Note:** This repository contains an application skeleton for Peak framework. If you want only the framework core, visit the main [framework repository](https://github.com/peakphp/framework).
 
-### About Peak Framework v2.x
+### About Peak Framework v3.x
 
 Requirements:
 
-    - PHP >= 5.6.4
+    - PHP >= 7.1.3
     - PDO PHP Extension
     - Mbstring PHP Extension
     - Tokenizer PHP Extension
