@@ -30,6 +30,7 @@ Thumbs.db
 .staging
 .testing
 .dev
+.env
 
 # Folders to ignore
 /node_modules

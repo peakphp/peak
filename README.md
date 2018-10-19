@@ -8,7 +8,7 @@
 
 > **Note:** This repository contains an application skeleton for Peak framework. If you want only the framework core, visit the main [framework repository](https://github.com/peakphp/framework).
 
-### About Peak Framework v3.x
+### About Peak Framework v4.x
 
 Requirements:
 
@@ -22,13 +22,3 @@ Requirements:
 ```
 composer create-project peak/peak --prefer-dist
 ```
-
-### Default application features:
-
- - MVC structure
- - [Laravel Database](https://github.com/illuminate/database)
- - [Phinx](https://github.com/robmorgan/phinx) for database migrations
-
-### Api
-
-Api documentation [here](http://api.peakframework.com)

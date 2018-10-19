@@ -1,60 +1,86 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application launcher
-|--------------------------------------------------------------------------
-*/
-include './../vendor/autoload.php';
+require '../vendor/autoload.php';
 
-use Peak\Bedrock\Application;
-use Peak\Di\Container;
-use Peak\Common\ExceptionLogger;
-
-// Look in __DIR__ for the first files found in this order: 
-// .prod or .staging or .testing
-// If no file found, [dev] will be used.
-$env = detectEnvFile(__DIR__);
-
-// create a container
-$container = new Container;
+use Peak\Backpack\Bedrock\AppBuilder;
+use Peak\Backpack\ConfigLoader;
+use Peak\Bedrock\Http\Response\Emitter;
+use Zend\Diactoros\ServerRequestFactory;
 
 try {
-    // create the app
-    $app = new Application($container, [
-        'env'  => $env,
-        'conf' => [
-            CONFIG_PATH.'/app.php',
-            CONFIG_PATH.'/app.'.$env.'.php',
-            CONFIG_PATH.'/database.'.$env.'.php'
-        ],
-        'path' => [
-            'public' => __DIR__,
-            'app'    => __DIR__.'/../app',
-        ]
+    /**
+     * create a cached configuration
+     * @var \Peak\Config\Config $config
+     */
+    $config = (new ConfigLoader())
+        ->setCache(CACHE_PATH, 'app-config', 10)
+        ->load([
+            CONFIG_PATH . '/app.yml'
+        ]);
+
+    /**
+     * create main application
+     * @var \Peak\Bedrock\Application\Application $app
+     */
+    $app = (new AppBuilder())
+        ->setEnv('dev')
+        ->setProps($config)
+        ->build();
+
+    /**
+     * Add application instance to the container
+     */
+    $app->getContainer()->set($app, 'MyApp');
+
+    /**
+     * Bootstrap stuff
+     */
+    $app->bootstrap([
+        \Peak\Backpack\Bedrock\Bootstrap\PhpSettings::class,
+        \Peak\Backpack\Bedrock\Bootstrap\Session::class
     ]);
 
-    // do all the process
-    $app->run()->render();
+    /**
+     * Register a route
+     */
+    $app->get('/',\App\Controller\HomeController::class);
+
+    /**
+     * Stack a 404 handler at the end of app
+     */
+    $app->stack(\App\Controller\NotFoundController::class);
+
+    /**
+     * Run app stack with current server request
+     */
+    $app->run(ServerRequestFactory::fromGlobals(), new Emitter());
 
 } catch(\Exception $e) {
 
-    // if kernel is present, try to render error controller.
-    // otherwise, if environment is "dev" we throw exception message
-    if ($container->hasAlias('AppKernel')) {
-        try {
-            $kernel = Application::kernel();
-            $kernel->front->errorDispatch($e);
-            $kernel->render();
-        } catch(\Exception $ee) {
-            if (isDev()) {
-                printHtmlExceptionTrace($ee);
-            }
-        }
-    } elseif (isDev()) {
-        printHtmlExceptionTrace($e);
-    }
+    /**
+     * Create an error application
+     */
+    $errorApp = (new AppBuilder())
+        ->setProps(new \Peak\Collection\PropertiesBag([
+            'app' => $app ?? null
+        ]))
+        ->setEnv('dev')
+        ->build();
 
-    // log exception
-    new ExceptionLogger($e, LOG_PATH.'/errors.log');
+    /**
+     * Stack and run without server request
+     */
+    $errorApp->stack(new \App\Controller\ErrorController($errorApp, $e))->runDry(new Emitter());
+}
+
+/**
+ * Create a DebugBar with dev env
+ */
+if (isset($app) && $app->getKernel()->getEnv() === 'dev') {
+    $debugBar = new \Peak\DebugBar\DebugBar($app->getContainer());
+    $debugBar
+        ->addDefaultModules()
+        ->addModule(new \Peak\Backpack\Bedrock\DebugBar\AppConfig\AppConfig($app))
+        ->addModule(new \Peak\Backpack\Bedrock\DebugBar\AppContainer\AppContainer($app));
+    echo $debugBar->render();
 }

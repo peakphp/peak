@@ -1,11 +1,3 @@
-RewriteEngine On
-
-## never rewrite for existing files, directories and links
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-l
-
-## rewrite everything else to index.php
-
-RewriteRule !\.(js|ico|gif|jpg|png|css)$ index.php
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !\.(?:jpe?g|gif|bmp|png|ico|tiff|css|js)$ [NC]
+RewriteRule !^index\.php$ index.php [L,NC]
