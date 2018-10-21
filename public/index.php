@@ -37,7 +37,8 @@ try {
      */
     $app->bootstrap([
         \Peak\Backpack\Bedrock\Bootstrap\PhpSettings::class,
-        \Peak\Backpack\Bedrock\Bootstrap\Session::class
+        \Peak\Backpack\Bedrock\Bootstrap\Session::class,
+        \Peak\Backpack\Bedrock\Bootstrap\Routing::class,
     ]);
 
     /**
@@ -46,7 +47,7 @@ try {
     $app->get('/',\App\Controller\HomeController::class);
 
     /**
-     * Stack a 404 handler at the end of app
+     * Stack a 404 handler at the end of app stack
      */
     $app->stack(\App\Controller\NotFoundController::class);
 
@@ -68,7 +69,7 @@ try {
         ->build();
 
     /**
-     * Stack and run without server request
+     * Stack and run without a server request
      */
     $errorApp->stack(new \App\Controller\ErrorController($errorApp, $e))->runDry(new Emitter());
 }
