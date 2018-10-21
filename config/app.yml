@@ -12,7 +12,7 @@ session:
     cookie_httponly: 1
     cookie_secure: 1
 
-routes_path_prefix: /peakphp/peak/public
+#routes_path_prefix: /prefix
 routes:
   - path: /welcome
     stack: \App\Controller\HomeController
