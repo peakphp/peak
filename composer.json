@@ -17,7 +17,7 @@
             "src/functions.php"
         ],
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/App/"
         }
     }
 }
