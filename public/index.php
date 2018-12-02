@@ -15,7 +15,8 @@ try {
     $config = (new ConfigLoader())
         ->setCache(CACHE_PATH, 'app-config', 10)
         ->load([
-            CONFIG_PATH . '/app.yml'
+            PROJECT_PATH.'/.env',
+            CONFIG_PATH . '/app.yml',
         ]);
 
     /**
@@ -23,7 +24,7 @@ try {
      * @var \Peak\Bedrock\Application\Application $app
      */
     $app = (new AppBuilder())
-        ->setEnv('dev')
+        ->setEnv($config->ENV ?? 'production')
         ->setProps($config)
         ->build();
 
@@ -65,7 +66,7 @@ try {
         ->setProps(new \Peak\Collection\PropertiesBag([
             'app' => $app ?? null
         ]))
-        ->setEnv('dev')
+        ->setEnv($config->ENV ?? 'production')
         ->build();
 
     /**
