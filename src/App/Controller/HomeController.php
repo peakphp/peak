@@ -7,14 +7,12 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as Handler;
 use Zend\Diactoros\Response\HtmlResponse;
 
-/**
- * Class HomeController
- * @package App\Controller
- */
 class HomeController implements Handler
 {
     /**
      * Handle the request and return a response.
+     * @param Request $request
+     * @return Response
      */
     public function handle(Request $request): Response
     {

@@ -9,10 +9,6 @@ use Psr\Http\Server\RequestHandlerInterface as Handler;
 use Zend\Diactoros\Response\HtmlResponse;
 use \Exception;
 
-/**
- * Class ErrorController
- * @package App\Controller
- */
 class ErrorController implements Handler
 {
     /**
@@ -28,7 +24,7 @@ class ErrorController implements Handler
     /**
      * ErrorController constructor.
      * @param Application $errorApp
-     * @param null|Application $app
+     * @param Exception $exception
      */
     public function __construct(Application $errorApp, Exception $exception)
     {
@@ -38,6 +34,8 @@ class ErrorController implements Handler
 
     /**
      * Handle the request and return a response.
+     * @param Request $request
+     * @return Response
      */
     public function handle(Request $request): Response
     {
