@@ -1,20 +1,3 @@
-# ignore OS generated files
-ehthumbs.db
-Thumbs.db
-
-# ignore Editor files
-*.sublime-project
-*.sublime-workspace
-*.komodoproject
-
-# ignore compiled files
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-
 # ignore packaged files
 *.7z
 *.dmg
@@ -32,10 +15,11 @@ Thumbs.db
 .dev
 .env
 
-# Folders to ignore
+# folders to ignore
 /node_modules
 /_test
 /_temp
 /_backup
 /vendor
 /.idea
+/cache/*
