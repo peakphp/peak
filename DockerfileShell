@@ -1,0 +1,14 @@
+FROM ubuntu:18.04
+
+ENV TZ=America/Toronto
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y software-properties-common && \
+    apt-get install -y git vim curl whois siege
+
+RUN apt-get install -y php && \
+    apt-get install -y php-pear php-fpm php-dev php-zip php-curl php-xmlrpc php-gd php-mysql php-mbstring php-xml libapache2-mod-php
+
+RUN curl -sS https://getcomposer.org/installer -o composer-setup.php && \
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer
