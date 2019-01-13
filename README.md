@@ -1,4 +1,4 @@
-# Peak Application skeleton
+# Peak Application Boilerplate
 
 > **Note:** This repository contains an application skeleton for Peak framework. If you want only the framework core, visit the main [framework repository](https://github.com/peakphp/framework).
 
