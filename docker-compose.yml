@@ -4,9 +4,8 @@ services:
   # Hint: docker-compose up -d web
   web:
     image: nginx:latest
-    container_name: nginx
     ports:
-      - 80:80
+      - 8080:80
     volumes:
       - .:/app
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
@@ -18,7 +17,6 @@ services:
   # Hint: docker-compose run php
   php:
     build: .
-    container_name: php
     volumes:
       - .:/app
       - ./docker/php:/usr/local/etc/php
@@ -29,7 +27,6 @@ services:
 
   redis:
     image: redis:5.0.3
-    container_name: redis
     ports:
       - 6379:6379
     volumes:
@@ -59,13 +56,21 @@ services:
 #      - MYSQL_ROOT_HOST=%
 #      - TZ=America/Toronto
 
+  composer-install:
+    restart: 'no'
+    tty: true
+    image: composer:1.8
+    command: install
+    volumes:
+      - .:/app
+
   # Hint: docker-compose up -d adminer
-  adminer:
-    image: adminer
-    links:
-      - db
-    ports:
-      - 8080:8080
+#  adminer:
+#    image: adminer
+#    links:
+#      - db
+#    ports:
+#      - 8080:8080
 
   # Hint: docker-compose run shell
   shell:

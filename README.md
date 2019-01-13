@@ -1,24 +1,36 @@
-<p align="center"><img src="http://francoislajoie.com/assets/img/peaklogo.jpg" alt="Peak"></p>
-<p align="center">
-<a href="https://packagist.org/packages/peak/framework"><img src="https://poser.pugx.org/peak/framework/version" alt="version"></a>
-<a href="https://travis-ci.org/peakphp/framework"><img src="https://travis-ci.org/peakphp/framework.svg" alt="Build status"></a>
-<a href="https://packagist.org/packages/peak/framework"><img src="https://poser.pugx.org/peak/framework/downloads" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/peak/framework"><img src="https://poser.pugx.org/peak/framework/license" alt="License"></a>
-</p>
+# Peak Application skeleton
 
 > **Note:** This repository contains an application skeleton for Peak framework. If you want only the framework core, visit the main [framework repository](https://github.com/peakphp/framework).
-
-### About Peak Framework v4.x
-
-Requirements:
-
-    - PHP >= 7.1.3
-    - PDO PHP Extension
-    - Mbstring PHP Extension
-    - Tokenizer PHP Extension
 
 ### Install via composer
 
 ```
-composer create-project peak/peak --prefer-dist
+$ composer create-project peak/peak --prefer-dist
 ```
+
+### Install manually 
+Download https://github.com/peakphp/peak/archive/master.zip
+
+
+### Quick start with Docker
+
+This project comes with a Docker configurations to help you start fast. What's included :
+
+- PHP 7.3
+- Nginx latest
+- MYSQL 8
+- Redis latest
+- And a bunch of tools like composer and database migration
+
+##### How to use it ?
+
+- Copy ``.env.dist`` to ``.env``
+- Install vendor with ``$ docker-compose run composer-install``
+- Start the web server with ``$ docker-compose up -d web``
+- Visit ``http://localhost:8080``
+
+Don't want to use docker? Just remove:
+ - `Dockerfile`
+ - `DockerfileShell`
+ - `docker-compose.yml`
+ - `/docker` folder
