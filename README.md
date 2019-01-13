@@ -11,7 +11,6 @@ $ composer create-project peak/peak --prefer-dist
 ### Install manually 
 Download https://github.com/peakphp/peak/archive/master.zip
 
-
 ### Quick start with Docker
 
 This project comes with a Docker configurations to help you start fast. What's included :
