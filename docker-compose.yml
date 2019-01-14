@@ -64,6 +64,14 @@ services:
     volumes:
       - .:/app
 
+  composer-update:
+    restart: 'no'
+    tty: true
+    image: composer:1.8
+    command: update
+    volumes:
+      - .:/app
+
   # Hint: docker-compose up -d adminer
 #  adminer:
 #    image: adminer

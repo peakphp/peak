@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=7.1.3",
-        "peak/framework": "@dev"
+        "peak/framework": "@dev",
+        "zendframework/zend-diactoros": "^1.8"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.2"
