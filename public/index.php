@@ -47,7 +47,6 @@ namespace {
 
     } catch (\Exception $e) {
 
-        echo $e->getMessage();
         // Create an error application
         $errorApp = (new AppBuilder())
             ->setProps(new \Peak\Collection\PropertiesBag([
@@ -60,15 +59,5 @@ namespace {
         $errorApp
             ->stack(new \App\Controller\ErrorController($errorApp, $e))
             ->runDry(new Emitter());
-    }
-
-// Create a DebugBar with dev env
-    if (isset($app) && $app->getKernel()->getEnv() === 'dev') {
-        $debugBar = new \Peak\DebugBar\DebugBar($app->getContainer());
-        $debugBar
-            ->addDefaultModules()
-            ->addModule(new \Peak\Backpack\DebugBar\AppConfig\AppConfig($app))
-            ->addModule(new \Peak\Backpack\DebugBar\AppContainer\AppContainer($app));
-        echo $debugBar->render();
     }
 }
