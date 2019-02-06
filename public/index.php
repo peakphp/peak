@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace {
 
     use App\Controller\HomeController;
