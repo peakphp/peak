@@ -23,7 +23,7 @@ namespace {
             ]);
 
         // create main application
-        /** @var \Peak\Bedrock\Application\Application $app */
+        /** @var \Peak\Bedrock\Http\Application $app */
         $app = (new AppBuilder())
             ->setEnv($config->get('env.ENV', 'production'))
             ->setProps($config)
