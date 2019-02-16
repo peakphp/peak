@@ -2,17 +2,14 @@ app:
   name: Peak App
   version: 1.0
 
+# PhpSettings Bootstrap
 php:
   display_errors: 0
   display_startup_errors: 0
   date.timezone: America/Toronto
 
+# Session Bootstrap
 session:
   options:
     cookie_httponly: 1
     cookie_secure: 1
-
-#routes_path_prefix: /prefix
-routes:
-  - path: /welcome
-    stack: \App\Controller\HomeController

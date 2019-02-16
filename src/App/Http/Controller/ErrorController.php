@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Http\Controller;
 
 use Peak\Blueprint\Bedrock\Application;
 use Psr\Http\Message\ResponseInterface as Response;

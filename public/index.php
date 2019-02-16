@@ -2,28 +2,23 @@
 
 namespace {
 
-    use App\Controller\HomeController;
-    use App\Controller\NotFoundController;
+    use App\ConfigFactory;
+    use App\Http\Controller\HomeController;
+    use App\Http\Controller\NotFoundController;
+    use App\Http\Controller\ErrorController;
     use Peak\Backpack\AppBuilder;
-    use Peak\Backpack\Bootstrap\Routing;
+    use Peak\Backpack\Bootstrap\PhpSettings;
     use Peak\Backpack\Bootstrap\Session;
-    use Peak\Backpack\ConfigLoader;
     use Peak\Http\Response\Emitter;
     use Zend\Diactoros\ServerRequestFactory;
 
     require '../vendor/autoload.php';
 
     try {
-        // create a cached configuration
-        $config = (new ConfigLoader())
-            ->setCache(CACHE_PATH, 'app-config', 60)
-            ->load([
-                ['env' => getenv()],
-                CONFIG_PATH . '/app.yml',
-            ]);
+
+        $config = (new ConfigFactory())->create();
 
         // create main application
-        /** @var \Peak\Bedrock\Http\Application $app */
         $app = (new AppBuilder())
             ->setEnv($config->get('env.ENV', 'production'))
             ->setProps($config)
@@ -33,8 +28,8 @@ namespace {
         $app
             // bootstrap stuff
             ->bootstrap([
+                PhpSettings::class,
                 Session::class,
-                Routing::class,
             ])
             // Register a home route
             ->get('/', HomeController::class)
@@ -57,7 +52,7 @@ namespace {
 
         // Stack and run without a server request
         $errorApp
-            ->stack(new \App\Controller\ErrorController($errorApp, $e))
+            ->stack(new ErrorController($errorApp, $e))
             ->runDry(new Emitter());
     }
 }
