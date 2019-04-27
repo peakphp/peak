@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Cli\Command;
+namespace Core\Cli\Command;
 
 use Peak\Common\Chrono\Chrono;
 use Symfony\Component\Console\Command\Command;

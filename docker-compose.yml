@@ -32,29 +32,29 @@ services:
     volumes:
       - ./db/redis:/data:rw
 
-#  redis-session: # Uncomment to use redis as session handler. see also docker/php/conf.d/redis-session.ini
-#    image: redis:5.0.3
-#    container_name: redis-session
-#    command: ["redis-server", "--save", "/data", "--appendonly", "yes"]
-#    hostname: redis-session
-#    ports:
-#      - 6380:6379
-#    volumes:
-#      - ./docker/data/redis-session:/data:rw
+  redis-session: # Uncomment to use redis as session handler. see also docker/php/conf.d/redis-session.ini
+    image: redis:5.0.3
+    container_name: redis-session
+    command: ["redis-server", "--save", "/data", "--appendonly", "yes"]
+    hostname: redis-session
+    ports:
+      - 6380:6379
+    volumes:
+      - ./docker/data/redis-session:/data:rw
 
-#  db: # Uncomment to use mysql
-#    image: mysql:8.0
-#    command: ["--default-authentication-plugin=mysql_native_password", "--skip-symbolic-links" ,"--innodb-use-native-aio=0"]
-#    container_name: db
-#    restart: always
-#    ports:
-#      - 3306:3306
-#    volumes:
-#      - ./db/mysql:/var/lib/mysql:rw
-#    environment:
-#      - MYSQL_ROOT_PASSWORD=root
-#      - MYSQL_ROOT_HOST=%
-#      - TZ=America/Toronto
+  db: # Uncomment to use mysql
+    image: mysql:8.0
+    command: ["--default-authentication-plugin=mysql_native_password", "--skip-symbolic-links" ,"--innodb-use-native-aio=0"]
+    container_name: db
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/mysql:/var/lib/mysql:rw
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_HOST=%
+      - TZ=America/Toronto
 
   composer-install:
     restart: 'no'

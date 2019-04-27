@@ -2,10 +2,10 @@
 
 namespace {
 
-    use App\ConfigFactory;
-    use App\Http\Controller\HomeController;
-    use App\Http\Controller\NotFoundController;
-    use App\Http\Controller\ErrorController;
+    use Core\Service\ConfigService;
+    use Core\Http\Controller\HomeController;
+    use Core\Http\Controller\NotFoundController;
+    use Core\Http\Controller\ErrorController;
     use Peak\Backpack\AppBuilder;
     use Peak\Backpack\Bootstrap\PhpSettings;
     use Peak\Backpack\Bootstrap\Session;
@@ -16,7 +16,7 @@ namespace {
 
     try {
 
-        $config = (new ConfigFactory())->create();
+        $config = (new ConfigService())->create();
 
         // create main application
         $app = (new AppBuilder())
@@ -44,10 +44,10 @@ namespace {
 
         // Create an error application
         $errorApp = (new AppBuilder())
-            ->setProps(new \Peak\Collection\PropertiesBag([
-                'app' => $app ?? null
-            ]))
             ->setEnv($config->get('env.ENV', 'production'))
+            ->setProps([
+                'app' => $app ?? null
+            ])
             ->build();
 
         // Stack and run without a server request

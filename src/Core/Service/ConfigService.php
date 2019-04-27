@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace Core\Service;
 
 use Peak\Backpack\ConfigLoader;
 use Peak\Config\Config;
 
-class ConfigFactory
+class ConfigService
 {
     /**
      * @return Config
