@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Core\Http\Controller;
 
 use Peak\Blueprint\Bedrock\Application;
@@ -42,7 +44,7 @@ class ErrorController implements Handler
         if ($this->errorApp->getKernel()->getEnv() === 'dev') {
             $msg = '<pre>Exception: '.print_r($this->exception->getMessage(), true).'</pre>';
         } else {
-            $msg = 'Something broken ... :(';
+            $msg = 'Something broke ... :(';
         }
 
         return new HtmlResponse($msg, 500);
