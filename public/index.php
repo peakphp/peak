@@ -3,9 +3,9 @@
 namespace {
 
     use Core\Service\ConfigService;
-    use Core\Http\Controller\HomeController;
-    use Core\Http\Controller\NotFoundController;
-    use Core\Http\Controller\ErrorController;
+    use Core\Http\Handler\HomeHandler;
+    use Core\Http\Handler\NotFoundHandler;
+    use Core\Http\Handler\ErrorHandler;
     use Peak\Backpack\AppBuilder;
     use Peak\Backpack\Bootstrap\PhpSettings;
     use Peak\Backpack\Bootstrap\Session;
@@ -32,10 +32,10 @@ namespace {
                 Session::class,
             ])
             // Register a home route
-            ->get('/', HomeController::class)
+            ->get('/', HomeHandler::class)
 
             // Stack a 404 handler at the end of application stack
-            ->stack(NotFoundController::class)
+            ->stack(NotFoundHandler::class)
 
             // Run application stack with current server request
             ->run(ServerRequestFactory::fromGlobals(), new Emitter());
@@ -52,7 +52,7 @@ namespace {
 
         // Stack and run without a server request
         $errorApp
-            ->stack(new ErrorController($errorApp, $e))
+            ->stack(new ErrorHandler($errorApp, $e))
             ->runDry(new Emitter());
     }
 }

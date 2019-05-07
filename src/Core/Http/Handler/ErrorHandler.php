@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Core\Http\Controller;
+namespace Core\Http\Handler;
 
 use Peak\Blueprint\Bedrock\Application;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -11,7 +11,7 @@ use Psr\Http\Server\RequestHandlerInterface as Handler;
 use Zend\Diactoros\Response\HtmlResponse;
 use \Exception;
 
-class ErrorController implements Handler
+class ErrorHandler implements Handler
 {
     /**
      * @var Application
@@ -24,7 +24,7 @@ class ErrorController implements Handler
     private $exception;
 
     /**
-     * ErrorController constructor.
+     * ErrorHandler constructor.
      * @param Application $errorApp
      * @param Exception $exception
      */
