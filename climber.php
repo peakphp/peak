@@ -2,8 +2,8 @@
 
 namespace {
 
-    use App\Cli\Command\ExampleCommand;
-    use App\ConfigFactory;
+    use Core\Cli\Command\ExampleCommand;
+    use Core\Service\ConfigService;
     use Peak\Bedrock\Cli\Application;
     use Peak\Bedrock\Kernel;
     use Peak\Di\Container;
@@ -12,7 +12,7 @@ namespace {
 
     try {
 
-        $config = (new ConfigFactory())->create();
+        $config = (new ConfigService())->create();
         $kernel = new Kernel($config->get('env.ENV', 'production'), new Container());
         $app = new Application($kernel, $config);
 

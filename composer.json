@@ -7,6 +7,7 @@
     "require": {
         "php": ">=7.2",
         "peak/framework": "@dev",
+        "peak/database": "@dev",
         "zendframework/zend-diactoros": "^2.1"
     },
     "require-dev": {

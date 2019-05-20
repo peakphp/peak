@@ -24,4 +24,23 @@ class ConfigService
                 CONFIG_PATH . '/app.yml',
             ]);
     }
+
+    /**
+     * @param $envConfig
+     * @return array
+     */
+    public function mapDbEnvConfig($envConfig): array
+    {
+        return [
+            'driver' => $envConfig['DB_DRIVER'],
+            'host' => $envConfig['DB_HOST'],
+            'port' => $envConfig['DB_PORT'],
+            'database' => $envConfig['DB_DATABASE'],
+            'username' => $envConfig['DB_USERNAME'],
+            'password' => $envConfig['DB_PASSWORD'],
+            'charset' => $envConfig['DB_CHARSET'],
+            'collation' => $envConfig['DB_COLLATION'],
+            'prefix' => $envConfig['DB_PREFIX'],
+        ];
+    }
 }
