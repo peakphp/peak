@@ -1,7 +1,9 @@
+#!/usr/bin/env php
 <?php
 
 namespace {
 
+    use Core\Cli\Command\CodeGeneratorCommand;
     use Core\Cli\Command\ExampleCommand;
     use Core\Service\ConfigService;
     use Peak\Bedrock\Cli\Application;
@@ -13,10 +15,12 @@ namespace {
     try {
 
         $config = (new ConfigService())->create();
-        $kernel = new Kernel($config->get('env.ENV', 'production'), new Container());
+        $kernel = new Kernel($config->get('env.ENV', 'prod'), new Container());
         $app = new Application($kernel, $config);
 
-        $app->add(ExampleCommand::class)
+        $app
+            ->add(CodeGeneratorCommand::class)
+            ->add(ExampleCommand::class)
             ->run();
 
     } catch (\Exception $e) {

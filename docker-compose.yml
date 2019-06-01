@@ -11,8 +11,8 @@ services:
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - php
-#      - db # Uncomment to use mysql
-#      - redis # Uncomment to use redis
+      #- db # Uncomment to use mysql
+      #- redis # Uncomment to use redis
 
   # Hint: docker-compose run php
   php:
@@ -22,8 +22,8 @@ services:
       - ./docker/php:/usr/local/etc/php
     env_file:
       - .env
-#    links: # Uncomment to use redis as session handler. see also docker/php/conf.d/redis-session.ini
-#      - redis-session
+    #links: # Uncomment to use redis as session handler. see also docker/php/conf.d/redis-session.ini
+    #  - redis-session
 
   redis:
     image: redis:5.0.3
@@ -56,6 +56,7 @@ services:
       - MYSQL_ROOT_HOST=%
       - TZ=America/Toronto
 
+  # Hint: docker-compose run compose-install
   composer-install:
     restart: 'no'
     tty: true
@@ -64,6 +65,7 @@ services:
     volumes:
       - .:/app
 
+  # Hint: docker-compose run compose-update
   composer-update:
     restart: 'no'
     tty: true
@@ -73,12 +75,12 @@ services:
       - .:/app
 
   # Hint: docker-compose up -d adminer
-#  adminer:
-#    image: adminer
-#    links:
-#      - db
-#    ports:
-#      - 8080:8080
+  adminer:
+    image: adminer
+    links:
+      - db
+    ports:
+      - 8080:8080
 
   # Hint: docker-compose run shell
   shell:
@@ -103,14 +105,27 @@ services:
     entrypoint: ["vendor/bin/phpunit"]
 
   # Hint: docker-compose run migration
-#  migration:
-#    build:
-#      context: ./
-#      dockerfile: DockerfileShell
-#    env_file:
-#      - .env
-#    tty: true
-#    entrypoint: ["vendor/bin/phinx"]
-#    working_dir: "/app"
-#    volumes:
-#      - .:/app
+  migration:
+    build:
+      context: ./
+      dockerfile: DockerfileShell
+    env_file:
+      - .env
+    tty: true
+    entrypoint: ["vendor/bin/phinx"]
+    working_dir: "/app"
+    volumes:
+      - .:/app
+
+  # Hint: docker-compose run climber [arguments]
+  climber:
+    build:
+      context: ./
+      dockerfile: DockerfileShell
+    env_file:
+      - .env
+    tty: true
+    working_dir: "/app"
+    entrypoint: ["php", "climber.php"]
+    volumes:
+      - .:/app
