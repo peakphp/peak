@@ -43,7 +43,7 @@ class CodeGeneratorCommand extends Command
             ->setHelp('Code Generator Command')
 
             ->setDefinition(new InputDefinition([
-                    new InputOption('template', 't', InputOption::VALUE_REQUIRED),
+                    new InputOption('template', 't', InputOption::VALUE_REQUIRED, 'Current templates: ['.implode(', ', array_keys($this->templates)).']'),
                     new InputOption('namespace', null, InputOption::VALUE_REQUIRED, ''),
                     new InputArgument('classname')
                 ])
@@ -63,13 +63,18 @@ class CodeGeneratorCommand extends Command
         $namespace = $input->getOption('namespace');
         $className = $input->getArgument('classname');
 
-        if (!is_string($templateName) || !array_key_exists($templateName, $this->templates)) {
-            $output->writeln('No template found for ['.$templateName.']');
+        if (empty($className)) {
+            $output->writeln('Please, specify a class name');
             return;
         }
 
-        if (empty($className)) {
-            $output->writeln('Please, specify a class name');
+        if (empty($templateName)) {
+            $output->writeln('Please, specify class template with -t. Current templates: ['.implode(', ', array_keys($this->templates)).']');
+            return;
+        }
+
+        if (!is_string($templateName) || !array_key_exists($templateName, $this->templates)) {
+            $output->writeln('No template found for ['.$templateName.']');
             return;
         }
 
