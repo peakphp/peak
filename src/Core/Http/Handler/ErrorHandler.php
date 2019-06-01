@@ -14,9 +14,9 @@ use \Exception;
 class ErrorHandler implements Handler
 {
     /**
-     * @var Application
+     * @var string
      */
-    private $errorApp;
+    private $env;
 
     /**
      * @var Exception
@@ -24,13 +24,25 @@ class ErrorHandler implements Handler
     private $exception;
 
     /**
+     * Show the exception message no matter $env is
+     * @var array<string>
+     */
+    private $explicitExceptions = [];
+
+    /**
+     * @var array<string,int>
+     */
+    private $exceptionsStatus = [];
+
+
+    /**
      * ErrorHandler constructor.
      * @param Application $errorApp
      * @param Exception $exception
      */
-    public function __construct(Application $errorApp, Exception $exception)
-    {
-        $this->errorApp = $errorApp;
+    public function __construct(string $env, Exception $exception) {
+
+        $this->env = $env;
         $this->exception = $exception;
     }
 
@@ -41,13 +53,26 @@ class ErrorHandler implements Handler
      */
     public function handle(Request $request): Response
     {
-        if ($this->errorApp->getKernel()->getEnv() === 'dev') {
-            $msg = '<pre>Exception: '.print_r($this->exception->getMessage(), true).'</pre>';
-        } else {
-            $msg = 'Something broke ... :(';
+        $data = [
+            'error' => 'Something broke ... :('
+        ];
+
+        $exceptionClass = get_class($this->exception);
+
+        if ($this->env === 'dev') {
+            $data = [
+                'errorCode' => $this->exception->getCode(),
+                'errorName' => $exceptionClass,
+                'error' => print_r($this->exception->getMessage(), true)
+            ];
+        } elseif (in_array($exceptionClass, $this->explicitExceptions)) {
+            $data = [
+                'error' => print_r($this->exception->getMessage(), true)
+            ];
         }
 
-        return new HtmlResponse($msg, 500);
+        $status = $this->exceptionsStatus[$exceptionClass] ?? 500;
 
+        return new HtmlResponse($data['error'], $status);
     }
 }

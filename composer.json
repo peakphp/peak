@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.2",
+        "monolog/monolog": "^1.24",
         "peak/framework": "@dev",
         "peak/database": "@dev",
         "zendframework/zend-diactoros": "^2.1"
@@ -19,7 +20,8 @@
             "src/functions.php"
         ],
         "psr-4": {
-            "Core\\": "src/Core/"
+            "Core\\": "src/Core/",
+            "Domain\\": "src/Domain/"
         }
     }
 }

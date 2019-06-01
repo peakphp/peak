@@ -5,10 +5,14 @@ namespace {
     use Core\Service\ConfigService;
     use Core\Http\Handler\HomeHandler;
     use Core\Http\Handler\NotFoundHandler;
-    use Core\Http\Handler\ErrorHandler;
-    use Peak\Backpack\AppBuilder;
+    use Core\Service\ErrorAppService;
+    use Core\Service\LoggerService;
+    use Peak\Backpack\Bedrock\HttpAppBuilder;
     use Peak\Backpack\Bootstrap\PhpSettings;
     use Peak\Backpack\Bootstrap\Session;
+    use Peak\Bedrock\Kernel;
+    use Peak\Blueprint\Config\Config;
+    use Peak\Di\Container;
     use Peak\Http\Response\Emitter;
     use Zend\Diactoros\ServerRequestFactory;
 
@@ -16,11 +20,18 @@ namespace {
 
     try {
 
+        $container = new Container();
+
         $config = (new ConfigService())->create();
+        $logger = (new LoggerService())->create();
+
+        $container->set($logger);
+
+        $kernel = new Kernel($config->get('env.ENV', 'prod'), $container);
 
         // create main application
-        $app = (new AppBuilder())
-            ->setEnv($config->get('env.ENV', 'production'))
+        $app = (new HttpAppBuilder())
+            ->setKernel($kernel)
             ->setProps($config)
             ->addToContainerAfterBuild()
             ->build();
@@ -40,19 +51,16 @@ namespace {
             // Run application stack with current server request
             ->run(ServerRequestFactory::fromGlobals(), new Emitter());
 
-    } catch (\Exception $e) {
+    } catch (\Exception $exception) {
 
-        // Create an error application
-        $errorApp = (new AppBuilder())
-            ->setEnv($config->get('env.ENV', 'production'))
-            ->setProps([
-                'app' => $app ?? null
-            ])
-            ->build();
+        $env = 'prod';
+        if ($config instanceof Config) {
+            $env = $config->get('env.ENV', 'prod');
+        }
 
-        // Stack and run without a server request
-        $errorApp
-            ->stack(new ErrorHandler($errorApp, $e))
-            ->runDry(new Emitter());
+        $logger = $logger ?? null;
+        $app = $app ?? null;
+
+        (new ErrorAppService())->run($env, $exception, $logger, ['app' => $app]);
     }
 }
