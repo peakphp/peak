@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Core\Cli\Command;
 
 use Peak\Common\Chrono\Chrono;
