@@ -2,7 +2,7 @@ version: '3.2'
 services:
 
   # Hint: docker-compose up -d web
-  web:
+  app:
     image: nginx:latest
     ports:
       - 8080:80
