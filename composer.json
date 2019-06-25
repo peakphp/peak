@@ -7,8 +7,8 @@
     "require": {
         "php": ">=7.2",
         "monolog/monolog": "^1.24",
-        "peak/framework": "@dev",
-        "peak/database": "@dev",
+        "peak/framework": "^4.0",
+        "peak/database": "^4.0",
         "zendframework/zend-diactoros": "^2.1"
     },
     "require-dev": {
