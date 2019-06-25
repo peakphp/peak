@@ -32,7 +32,9 @@ This project comes with a Docker configurations to help you start fast. What's i
 - Nginx latest
 - MYSQL 8
 - Redis latest
-- And a bunch of tools like composer and database migration
+- Composer install & update
+- Database migration
+- Shell access
 
 ##### How to use it ?
 
@@ -51,3 +53,6 @@ Don't want to use docker? Just remove:
  - `DockerfileShell`
  - `docker-compose.yml`
  - `/docker` folder
+ 
+### Code generator
+$ docker-compose run climber codegen
