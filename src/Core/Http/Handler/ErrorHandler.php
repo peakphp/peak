@@ -34,10 +34,9 @@ class ErrorHandler implements Handler
      */
     private $exceptionsStatus = [];
 
-
     /**
      * ErrorHandler constructor.
-     * @param Application $errorApp
+     * @param string $env
      * @param Exception $exception
      */
     public function __construct(string $env, Exception $exception) {

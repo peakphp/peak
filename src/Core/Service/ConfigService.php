@@ -26,10 +26,10 @@ class ConfigService
     }
 
     /**
-     * @param $envConfig
+     * @param array $envConfig
      * @return array
      */
-    public function mapDbEnvConfig($envConfig): array
+    public function mapDbEnvConfig(array $envConfig): array
     {
         return [
             'driver' => $envConfig['DB_DRIVER'],
