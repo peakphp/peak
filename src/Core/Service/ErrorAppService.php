@@ -17,7 +17,7 @@ class ErrorAppService
      * @param string $env
      * @param Exception $exception
      * @param Logger|null $logger
-     * @param array $props
+     * @param array|mixed $props
      */
     public function run(string $env, Exception $exception, ?Logger $logger, $props = [])
     {
