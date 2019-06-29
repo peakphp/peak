@@ -14,6 +14,7 @@
 .testing
 .dev
 .env
+.phpunit.result.cache
 
 # folders to ignore
 /node_modules
