@@ -5,6 +5,7 @@ namespace {
     use Core\Service\ConfigService;
     use Core\Http\Handler\HomeHandler;
     use Core\Http\Handler\NotFoundHandler;
+    use Core\Service\ContainerService;
     use Core\Service\ErrorAppService;
     use Core\Service\LoggerService;
     use Peak\Backpack\Bedrock\HttpAppBuilder;
@@ -12,7 +13,6 @@ namespace {
     use Peak\Backpack\Bootstrap\Session;
     use Peak\Bedrock\Kernel;
     use Peak\Blueprint\Config\Config;
-    use Peak\Di\Container;
     use Peak\Http\Response\Emitter;
     use Zend\Diactoros\ServerRequestFactory;
 
@@ -20,10 +20,9 @@ namespace {
 
     try {
 
-        $container = new Container();
-
         $config = (new ConfigService())->create();
         $logger = (new LoggerService())->create();
+        $container = (new ContainerService())->create($config->get('container', []));
 
         $container->set($logger);
 
