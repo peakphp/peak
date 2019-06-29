@@ -24,3 +24,4 @@
 /.idea
 /cache/*
 /logs/*
+/tests/_reports/*

@@ -4,6 +4,7 @@ Release date: ?
 
  - added missing laravel database and phinx migration
  - removed realpath() from constants.php which cause problem on some linux server
+ - added Core\Service\ContainerService
 
 VERSION 4.0.0
 -------------
