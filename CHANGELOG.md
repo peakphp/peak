@@ -7,7 +7,6 @@ Release date: 2019-06-29
  - added Core\Service\ContainerService
  - added tests for services
  - added phpstan
- 
 
 VERSION 4.0.0
 -------------
