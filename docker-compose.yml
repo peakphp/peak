@@ -30,7 +30,7 @@ services:
     ports:
       - 6379:6379
     volumes:
-      - ./db/redis:/data:rw
+      - ./docker/data/redis:/data:rw
 
   redis-session: # Uncomment to use redis as session handler. see also docker/php/conf.d/redis-session.ini
     image: redis:5.0.3
@@ -50,7 +50,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./db/mysql:/var/lib/mysql:rw
+      - ./docker/data/mysql:/var/lib/mysql:rw
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_ROOT_HOST=%
