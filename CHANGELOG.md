@@ -1,3 +1,9 @@
+VERSION 4.0.2
+-------------
+Release date: ?
+
+ - fixed typo in Core\Service\ContainerService
+
 VERSION 4.0.1
 -------------
 Release date: 2019-06-29
