@@ -20,8 +20,8 @@ class ContainerService
             $container->bindSingletons($config['singletons']);
         }
 
-        if (isset($config['prototype'])) {
-            $container->bindPrototypes($config['prototype']);
+        if (isset($config['prototypes'])) {
+            $container->bindPrototypes($config['prototypes']);
         }
 
         return $container;
