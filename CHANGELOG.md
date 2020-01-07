@@ -1,8 +1,10 @@
-VERSION 4.0.2
+VERSION 4.1.2
 -------------
-Release date: ?
+Release date: 2020-01-07
 
  - fixed typo in Core\Service\ContainerService
+ - updated composer.json
+ - simplified public/index.php
 
 VERSION 4.0.1
 -------------
