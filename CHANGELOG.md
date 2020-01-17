@@ -1,3 +1,10 @@
+VERSION 4.2.0
+-------------
+Release date: ?
+
+ - added default home route (the / route)
+ - updated docker php version from 7.3 to 7.4
+
 VERSION 4.1.2
 -------------
 Release date: 2020-01-07
