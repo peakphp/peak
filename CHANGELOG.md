@@ -4,6 +4,8 @@ Release date: ?
 
  - added default home route (the / route)
  - updated docker php version from 7.3 to 7.4
+ - updated monolog version
+ - switched from zendframework/zend-diactoros to laminas/laminas-diactoros
 
 VERSION 4.1.2
 -------------
